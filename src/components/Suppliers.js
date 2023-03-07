@@ -4,17 +4,17 @@ import Select from 'react-select';
 import './Supplier.css'
 
 const suppliers = [
-    { label: 'Facebook', value: 'Facebook' },
-    { label: 'Instagram', value: 'Instagram' },
-    { label: 'YouTube', value: 'YouTube' },
+    { label: 'Messi', value: 'Messi' },
+    { label: 'Ronaldo', value: 'Ronaldo' },
+    { label: 'Mbappe', value: 'Mbappe' },
 ]
 
-const DBSuppliers = ['Facebook', 'Instagram', 'YouTube'];
+const DBSuppliers = ['Messi', 'Ronaldo', 'Mbappe'];
 
 const DBSuppliers2 = [
-    { id: 123, name: 'Facebook', adress: 'FB Address' },
-    { id: 124, name: 'Instagram', adress: 'IG Address' },
-    { id: 125, name: 'Youtube', adress: 'YT Address' },
+    { id: 123, name: 'Messi', adress: 'FB Address' },
+    { id: 124, name: 'Ronaldo', adress: 'IG Address' },
+    { id: 125, name: 'Mbappe', adress: 'YT Address' },
 ]
 
 export const Suppliers = () => {
