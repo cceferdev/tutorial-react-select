@@ -5,7 +5,15 @@ const App = () => {
 
 	return (
 		<>
-			<Suppliers />
+			<Suppliers/>
+
+			<nav className="navbar navbar-dark bg-dark">
+				<div>
+				<a className='navbar-brand text-uppercase' href='/'>Jugador Seleccionado {Suppliers.event} </a>	
+				</div>
+			</nav>
+
+			
 		</>
 	)
 
