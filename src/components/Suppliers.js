@@ -3,8 +3,6 @@ import Select from 'react-select';
 
 import './Supplier.css'
 
-
-
 const players = [
   { player: 'Lionel Messi', age: 34, team: ['FC Barcelona'] },
   { player: 'Cristiano Ronaldo', age: 37, team: ['Manchester United', 'Real Madrid', 'Juventus'] },
@@ -19,7 +17,7 @@ const players = [
 ]
 
 
-export const Suppliers = () => {
+export const Suppliers = ({}) => {
     const handleSelectChange = ( event ) => {
         console.log(event);
         return
