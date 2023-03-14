@@ -1,34 +1,71 @@
 import React, {useEffect, useState} from 'react'
 import NavBar from './components/NavBar'
-import { Suppliers } from './components/Suppliers'
+import {Suppliers} from './components/Suppliers'
+import Characters from './components/Characters';
+import getGifs from './components/getGifs';
 
 
 function App  () {
 
-	const [state, setstate] = useState (initialState)
+	const DI_GIFS = ["https://media4.giphy.com/media/TjAcxImn74uoDYVxFl/200w.webp?cid=ecf05e47qsq3csc6o8h98970pzwb7f3ngdx05joeyettmt18&rid=200w.webp&ct=g"]
 
-	const initialUrl = "https://api.giphy.com/v1/gifs/search?api_key=GeYKTDJ4wk2MGG04vRTa10BZmBfXihEn&q=Ronaldo&limit=25&offset=0&rating=g&lang=en"
 
-	const fetchCharacters=(initialUrl)=>{
-	fetch(initialUrl)
-	.then(Response=>Response.json())
-	.then(data => console.log(data.results))
-	.catch(error=> console.log(error))
-	}
+	const [gifs, setGifs] = useState([])
+
+
+	useEffect(function(){
+	  getGifs().then(gifs=>setGifs(gifs))
+	}, [])
+  
+	/*
+	return (
+	  <div className="App">
+		<section className="App-content">
+		  {
+			gifs.map(singleGif => <img src={singleGif} />)
+		  } 
+		</section>
+	  </div>
+	);
+	*/
+	  
+
+
+
+
+
+
+
+	const [characters, setCharacters] = useState ([]);
+
+
+	const fetchCharacters=(url)=>{
+	fetch(url)
+	.then((Response)=>Response.json())
+	.then((data) => setCharacters(data.results))
+	.catch((error)=> console.log(error))
+	console.log(initialUrl);
+	};
 	useEffect(()=> {
 		fetchCharacters(initialUrl);
-	}, [])
+	}, []);
 
 
 
 	return (
 		<>
 			<Suppliers />
-			
-			<NavBar brand ='Jugador Seleccionado'/>
+
+			<NavBar brand ='Jugador Seleccionado'/ >
+
+			<div className='container'>
+
+			<Characters characters={characters}/>
+
+			</div>
 		</>
 	
-	)
+	);
 
 }
 

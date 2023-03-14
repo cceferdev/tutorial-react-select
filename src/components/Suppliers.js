@@ -17,7 +17,7 @@ const players = [
 ]
 
 
-export const Suppliers = ({}) => {
+export const Suppliers = ({dato}) => {
     const handleSelectChange = ( event ) => {
         console.log(event);
         return
