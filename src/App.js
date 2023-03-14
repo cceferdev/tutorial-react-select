@@ -44,16 +44,27 @@ function App  () {
 	.then((Response)=>Response.json())
 	.then((data) => setCharacters(data.results))
 	.catch((error)=> console.log(error))
-	console.log(initialUrl);
+	
 	};
 	useEffect(()=> {
-		fetchCharacters(initialUrl);
+		fetchCharacters();
 	}, []);
 
 
 
 	return (
 		<>
+
+		<div className="App">
+     	 <section className="App-content">
+        {
+          gifs.map(singleGif => <img src={singleGif}/>)
+        }
+        <button onClick={()=> setGifs(DI_GIFS)}>Ver a Messi</button>
+        
+      </section>
+   		 </div>
+		 
 			<Suppliers />
 
 			<NavBar brand ='Jugador Seleccionado'/ >
