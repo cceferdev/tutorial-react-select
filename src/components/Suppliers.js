@@ -17,10 +17,11 @@ const players = [
 ]
 
 
-export const Suppliers = ({dato}) => {
+export const Suppliers = ({setValue}) => {
+    const [team, setTeam] = useState ();
     const handleSelectChange = ( event ) => {
-        console.log(event);
-        return
+        console.log('lo que pinta aqui', event);
+       setValue(event.label)
     }
 
     return (
@@ -29,7 +30,9 @@ export const Suppliers = ({dato}) => {
                 // defaultValue = { suppliers[0] }
                 options= { players.map(sup => ({ label: sup.player })) }
                 onChange = { handleSelectChange }
+             
             />
+
         </div>
         
     )

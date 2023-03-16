@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Filter from './Filter';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Filter />
   </React.StrictMode>,
   document.getElementById('root')
 );

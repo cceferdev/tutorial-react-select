@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import {Suppliers} from './components/Suppliers'
 import Characters from './components/Characters';
 import getGifs from './components/getGifs';
+const api_key = 'GeYKTDJ4wk2MGG04vRTa10BZmBfXihEn'
 
 
 function App  () {
@@ -12,66 +13,50 @@ function App  () {
 
 	const [gifs, setGifs] = useState([])
 
+	const [characters, setCharacters] = useState ();
+	const [value, setValue] = useState();
 
-	useEffect(function(){
-	  getGifs().then(gifs=>setGifs(gifs))
-	}, [])
-  
-	/*
-	return (
-	  <div className="App">
-		<section className="App-content">
-		  {
-			gifs.map(singleGif => <img src={singleGif} />)
-		  } 
-		</section>
-	  </div>
-	);
-	*/
-	  
+	function getGifs (keyword) {
+		const apiUrls = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${keyword}&limit=25&offset=0&rating=pg-13&lang=en`
+		
+			return fetch(apiUrls)
+			.then(res => res.json())
+			.then(response => {
+			   const {data}  = response
+		
+			   if(Array.isArray(data)){
+		
+			   const gifs = data.map(image => image.images.
+			   downsized_medium.url)
+			   setGifs(gifs)
+			   }
+			
+			   })
+			} 
 
-
-
-
-
-
-
-	const [characters, setCharacters] = useState ([]);
-
-
-	const fetchCharacters=(url)=>{
-	fetch(url)
-	.then((Response)=>Response.json())
-	.then((data) => setCharacters(data.results))
-	.catch((error)=> console.log(error))
-	
-	};
 	useEffect(()=> {
-		fetchCharacters();
-	}, []);
+		getGifs(value);
+	//	console.log(value);
+	}, [value]);
 
-
+	
 
 	return (
 		<>
 
 		<div className="App">
      	 <section className="App-content">
-        {
-          gifs.map(singleGif => <img src={singleGif}/>)
-        }
-        <button onClick={()=> setGifs(DI_GIFS)}>Ver a Messi</button>
         
       </section>
    		 </div>
 		 
-			<Suppliers />
-
 			<NavBar brand ='Jugador Seleccionado'/ >
+
+			<Suppliers setValue={setValue}/>
 
 			<div className='container'>
 
-			<Characters characters={characters}/>
+			<Characters characters={gifs}/>
 
 			</div>
 		</>
