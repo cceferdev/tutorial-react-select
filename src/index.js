@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Filter from './Filter';
+import Filter from './forEachConMap';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Filter />
+    <forEachConMap />
   </React.StrictMode>,
   document.getElementById('root')
 );
